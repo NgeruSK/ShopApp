@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_app/screens/CartItems.dart';
 import '../providers/products_provider.dart';
 import 'package:shopping_app/screens/ProductItem.dart';
 import 'package:shopping_app/widgets/product_tile.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget{
         home: HomePage(),
         routes: {
           ProductItem.routeName : (ctx) => ProductItem(),
+          CartItem.routeName : (ctx) => CartItem(),
         },
 
       ),
@@ -48,7 +50,17 @@ class HomePageState extends State<HomePage>
     my_products = ProductData.itemsGetter;
     return Scaffold(
       appBar: AppBar(title: Text('SimoShop'),actions: [
-        IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart))
+        IconButton(onPressed: (){
+         // ProductData.addProduct();
+          Navigator.of(context).pushNamed(CartItem.routeName);
+        }, icon: Icon(Icons.shopping_cart)),
+
+        PopupMenuButton(itemBuilder: (_)=>[PopupMenuItem(child: Text('Favourites Only'),onTap: (){ProductData.showFavourites(true);},),
+          PopupMenuItem(child: Text('Show All'), onTap: (){ProductData.showFavourites(false);},),
+
+        ]),
+
+
       ]),
       body: ProductsGrid(),
     );
@@ -58,7 +70,7 @@ class HomePageState extends State<HomePage>
     return GridView.builder(
       itemBuilder: (BuildContext ctx, index)
         {
-          return ProductTile(my_products[index]);
+          return ProductTile(index);
         },
       itemCount: my_products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 3/2,crossAxisSpacing: 5),
