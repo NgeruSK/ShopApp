@@ -56,4 +56,9 @@ class ProductsProvider with ChangeNotifier{
   {
     cart_items?.add(prod);
   }
+
+  void removeFromBasket(Product prod)
+  {
+    cart_items?.remove(prod);
+  }
 }
