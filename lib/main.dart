@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shopping_app/screens/CartItems.dart';
+import '../screens/CartItems.dart';
 import '../providers/products_provider.dart';
-import 'package:shopping_app/screens/ProductItem.dart';
-import 'package:shopping_app/widgets/product_tile.dart';
+import '../screens/ProductItem.dart';
+import '../widgets/product_tile.dart';
 import 'products.dart';
 
 import 'models/product_model.dart';

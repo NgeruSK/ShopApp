@@ -47,7 +47,8 @@ class _ProductTileState extends State<ProductTile> {
             )
                 : Icon(Icons.favorite_border),
                 onPressed: (){ProductData.toggleFavourite(widget.index);}),
-            title: Text(selected_product.title),trailing: IconButton(icon: Icon(Icons.add_shopping_cart),
+            title: Text(selected_product.title),
+            trailing: IconButton(icon: Icon(Icons.add_shopping_cart),
               onPressed: (){
               ProductData.addToBasket(selected_product);
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Item Added to Cart'),duration: Duration(seconds: 2),));
